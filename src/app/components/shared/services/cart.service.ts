@@ -32,7 +32,7 @@ public observer   :  Subscriber<{}>;
     return <Observable<CartItem[]>>itemsStream;
   }
 
-   // Add to cart
+  // Add to cart
    public addToCart(product: Product, quantity: number) {
     let message, status;
      var item: CartItem | boolean = false;
@@ -69,7 +69,7 @@ public observer   :  Subscriber<{}>;
 public calculateStockCounts(product: CartItem, quantity): CartItem | Boolean {
   let message, status;
   let qty   = product.quantity + quantity;
-  let stock = product.product.stock;
+  let stock = product.product.quantity;
   if(stock < qty) {
     // this.toastrService.error('You can not add more items than available. In stock '+ stock +' items.');
     this.snackBar.open('You can not choose more items than available. In stock ' + stock + ' items.', '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });

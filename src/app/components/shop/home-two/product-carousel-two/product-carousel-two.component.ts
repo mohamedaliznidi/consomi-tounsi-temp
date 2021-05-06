@@ -68,9 +68,9 @@ export class ProductCarouselTwoComponent implements OnInit {
   }
 
    // Add to compare
-   public addToCompare(product: Product) {
+ /*  public addToCompare(product: Product) {
      this.productsService.addToCompare(product);
-  }
+  }*/
 
 
  public openProductDialog(product){

@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from 'src/app/modals/product.model';
 import { MatSnackBar } from '@angular/material';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
 
 
 
@@ -14,8 +16,15 @@ let products = JSON.parse(localStorage.getItem("compareItem")) || [];
   providedIn: 'root'
 })
 export class ProductService {
-  public currency : string = 'USD';
+  public currency : string = 'DT';
   public catalogMode : boolean = false;
+
+
+
+
+  private apiserverUrl=environment.apiBaseUrl;
+    
+  
 
   private _url: string = "assets/data/";
   public url = "assets/data/banners.json";
@@ -28,7 +37,7 @@ export class ProductService {
   }
 
   private products(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>('assets/data/products2.json');
+    return this.httpClient.get<Product[]>(`${this.apiserverUrl}/product/products`);
   }
 
   public banners(): Observable<any[]>{
@@ -81,7 +90,7 @@ public hasProduct(product: Product): boolean {
 }
 
  // Add to compare
- public addToCompare(product: Product): Product | boolean {
+ /**public addToCompare(product: Product): Product | boolean {
   let message, status;
   var item: Product | boolean = false;
   if (this.hasProduct(product)) {
@@ -99,7 +108,7 @@ public hasProduct(product: Product): boolean {
   }
     localStorage.setItem("compareItem", JSON.stringify(products));
     return item;
-}
+}*/
 
 // Removed Product
 public removeFromCompare(product: Product) {
@@ -116,7 +125,7 @@ public removeFromCompare(product: Product) {
          if(category == 'all')
             return item
             else
-            return item.category === category;
+            return item.nature=== category;
 
        })
      ));

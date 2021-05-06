@@ -8,7 +8,7 @@
               <ul class="product-list">
                 <li *ngFor="let product of products | slice:0:3 " fxLayout="row">
                   <div class="media-image">
-                    <a [routerLink]="['/home/product', product.id]"><img [src]="product.pictures[0].big" class="small" alt=""> </a>
+                    <a [routerLink]="['/home/product', product.id]"><img [src]="product.image" class="small" alt=""> </a>
                   </div>
                   <div class="media-body">
                     <a [routerLink]="['/home/product', product.id]"><span>{{product.name}}</span></a>
@@ -33,7 +33,7 @@
                 <ul class="product-list">
                   <li *ngFor="let product of products | slice:6:9 " fxLayout="row">
                     <div class="media-image">
-                      <a [routerLink]="['/home/product', product.id]"><img [src]="product.pictures[0].big" class="small" alt=""> </a>
+                      <a [routerLink]="['/home/product', product.id]"><img [src]="product.image" class="small" alt=""> </a>
                     </div>
                     <div class="media-body">
                       <a [routerLink]="['/home/product', product.id]"><span>{{product.name}}</span></a>
@@ -58,7 +58,7 @@
                   <ul class="product-list">
                     <li *ngFor="let product of products | slice:9:12 " fxLayout="row">
                       <div class="media-image">
-                        <a ><img [routerLink]="['/home/product', product.id]" [src]="product.pictures[0].big" class="small" alt=""> </a>
+                        <a ><img [routerLink]="['/home/product', product.id]" [src]="product.image" class="small" alt=""> </a>
                       </div>
                       <div class="media-body">
                        <a [routerLink]="['/home/product', product.id]"><span>{{product.name}}</span></a>

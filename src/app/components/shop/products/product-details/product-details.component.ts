@@ -6,6 +6,18 @@ import { MatDialog } from '@angular/material';
 import { CartService } from 'src/app/components/shared/services/cart.service';
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
+import { CommentsService } from './comments.service';
+import { HttpErrorResponse } from '@angular/common/http';
+
+export interface comments{
+  idclient : number;
+  idproduct:number;
+  date:Date;
+  content:string;
+  rate:number;
+      
+  }
+
 
 
 @Component({
@@ -14,6 +26,7 @@ import { ProductZoomComponent } from './product-zoom/product-zoom.component';
   styleUrls: ['./product-details.component.sass']
 })
 export class ProductDetailsComponent implements OnInit {
+  public comments : comments[];
 
   public config: SwiperConfigInterface={};
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
@@ -32,11 +45,12 @@ export class ProductDetailsComponent implements OnInit {
   index: number;
   bigProductImageIndex = 0;
 
-  constructor(private route: ActivatedRoute, public productsService: ProductService, public dialog: MatDialog, private router: Router, private cartService: CartService) {
+  constructor(private route: ActivatedRoute, public productsService: ProductService, public dialog: MatDialog, private router: Router, private cartService: CartService,private commentsservice : CommentsService) {
     this.route.params.subscribe(params => {
       const id = +params['id'];
       this.productsService.getProduct(id).subscribe(product => this.product = product)
     });
+    this.comments=[];
    }
 
   ngOnInit() {
@@ -44,7 +58,23 @@ export class ProductDetailsComponent implements OnInit {
 
 
     this.getRelatedProducts();
+    this.getcomments();
   }
+
+
+
+  public getcomments(): void {
+    this.commentsservice.getcomments().subscribe(
+
+        (response: comments[])=> {
+          this.comments=response;
+
+        },
+        (error: HttpErrorResponse)=> {
+          alert(error.message);
+        }
+      );
+    }
 
 
   ngAfterViewInit() {

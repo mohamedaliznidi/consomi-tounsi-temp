@@ -14,7 +14,7 @@
                        <button mat-icon-button  fxHide="false" fxHide.gt-md>
                           <mat-icon>fullscreen</mat-icon>
                        </button>
-                       <img [src]="product.pictures[bigProductImageIndex].big"/>
+                       <img [src]="product.image"/>
                     </div>
                     <a (click)="openProductDialog(product, bigProductImageIndex)" style="cursor: pointer;"><mat-icon>zoom_in</mat-icon></a>
                  </mat-card>
@@ -78,7 +78,7 @@
                <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
                <mat-tab label="Description">
                   <div class="full-desc lh">
-                     <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                     <p class="text-muted">{{product.description}}</p>
                   </div>
                </mat-tab>
                <mat-tab label="Details">
@@ -94,16 +94,18 @@
                      </ul>
                   </div>
                </mat-tab>
+               <!--REVIEWPART-->
                <mat-tab label="Reviews">
                   <div class="full-desc lh">
                      <mat-list class="reviews">
                         <mat-list-item class="content">
                            <img matListAvatar [src]="'assets/images/avatars/avatar-1.png'" alt="image" class="review-author">
                            <p matLine fxLayoutAlign="start center">
-                              <span class="name">Martina Solsker</span>
+
+                              <span class="name" *ngFor="let comment of comments">{{comment.id_client}}</span>
                            </p>
                            <p matLine class="text-muted"><small>22 Mart, 2018 at 18:44</small></p>
-                           <p matLine class="text">Integer id eros et mi fringilla imperdiet. In dictum turpis eget magna viverra condimentum. Ut malesuada interdum ultrices. Proin tristique sem pellentesque, posuere dui in, maximus magna. Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna.</p>
+                           <p matLine class="text" *ngFor="let comment of comments">{{comment.content}} </p>
                         </mat-list-item>
                         <mat-list-item class="content">
                            <img matListAvatar [src]="'assets/images/avatars/avatar-2.png'" alt="image" class="review-author">
@@ -189,7 +191,7 @@
        <div fxLayout="row wrap" fxHide fxShow.gt-sm fxFlex="100" fxFlex.gt-sm="22">
         <div fxFlex="100"  >
           <div fxLayout="row wrap" class="info-bar" ngClass.gt-md="m-0">
-             <div fxFlex="100" >
+            <!-- <div fxFlex="100" >
                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                    <mat-icon class="mat-icon-xlg  m-0">card_giftcard</mat-icon>
                    <div class="content ml-10">
@@ -197,7 +199,7 @@
                       <span class="text-muted m-0">Get a bonus plus for buying more that three products</span>
                    </div>
                 </mat-card>
-             </div>
+             </div>-->
              <div fxFlex="100" >
                 <mat-card class="light-block" fxLayout="row"  fxLayoutAlign="start center">
                    <mat-icon class="mat-icon-xlg  m-0">local_shipping</mat-icon>
@@ -221,7 +223,7 @@
                    <mat-icon class="mat-icon-xlg m-0">history</mat-icon>
                    <div class="content ml-10">
                       <p>ONLINE SUPPORT 24/7</p>
-                      <span class="text-muted m-0">Call us: 02 3555 65454 55</span>
+                      <span class="text-muted m-0">Call us: +216 55 555 555</span>
                    </div>
                 </mat-card>
              </div>

@@ -18,4 +18,8 @@ export class CommentsService {
 
     }
 
+    getPComments(id: number): Observable<comments[]> {
+      return this.http.get<comments[]>(`${this.apiserverUrl}/commentproduct/findproductcomments/`+id)
+    }
+
 }

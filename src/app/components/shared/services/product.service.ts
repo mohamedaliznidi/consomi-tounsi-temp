@@ -131,4 +131,14 @@ public removeFromCompare(product: Product) {
      ));
   }
 
+
+  public getNutriScore(idproduct : number): Observable<number>{
+
+    return this.httpClient.get<number>(`${this.apiserverUrl}/product/generateHealthyscore/`+idproduct);
+  }
+  public getEcoScore(idproduct : number): Observable<number>{
+
+    return this.httpClient.get<number>(`${this.apiserverUrl}/product/generateEcoScore/`+idproduct);
+  }
+
 }

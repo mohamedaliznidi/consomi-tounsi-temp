@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../shared/services/product.service';
 import { Product } from 'src/app/modals/product.model';
+import { PublicityService } from './publicity.service';
+import { Publicity } from './publicity';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +11,25 @@ import { Product } from 'src/app/modals/product.model';
 })
 export class HomeComponent implements OnInit {
   products: Product[];
+  slides1: Publicity[];
   public banners = [];
   public slides = [
-    { title: 'Huge sale', subtitle: 'Up to 70%', image: 'assets/images/carousel/banner1.jpg' },
-    { title: 'Biggest discount', subtitle: 'Check the promotion', image: 'assets/images/carousel/banner2.jpg' },
-    { title: 'Biggest sale', subtitle: 'Dont miss it', image: 'assets/images/carousel/banner3.jpg' },
-    { title: 'Our best products', subtitle: 'Special selection', image: 'assets/images/carousel/banner4.jpg' },
-    { title: 'Massive sale', subtitle: 'Only for today', image: 'assets/images/carousel/banner5.jpg' }
+    { title: 'Your Well Being is our Priority', subtitle: 'More about Healthy score', image: 'https://images.pexels.com/photos/4350223/pexels-photo-4350223.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' },
+    { title: 'Discover Our Products', subtitle: 'We ensure Diversity.', image: 'https://images.pexels.com/photos/5490824/pexels-photo-5490824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' },
+    { title: 'What About the Environement ?', subtitle: 'Respect the Environment By Eco shopping !', image: 'https://images.pexels.com/photos/3889990/pexels-photo-3889990.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' },
   ];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private publicityservice: PublicityService) { }
 
   ngOnInit() {
+
+    this.publicityservice.publicities().subscribe(
+      (publicity: Publicity[]) => {
+        this.slides1 = publicity;
+
+      }
+    )
+
     this.productService.getBanners()
     .subscribe(
       data => this.banners = data
@@ -31,7 +40,9 @@ export class HomeComponent implements OnInit {
    (product: Product[]) => {
      this.products = product
    }
- )
+ ) ;
+
+ 
 
   }
 

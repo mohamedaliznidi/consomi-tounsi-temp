@@ -8,8 +8,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class PriceComponent implements OnInit {
 
 
-  public priceFrom: number = 750;
-  public priceTo: number = 1599;
+  public priceFrom: number = 0;
+  public priceTo: number = 3000;
   // Using Output EventEmitter
   @Output() priceFilters = new EventEmitter();
 

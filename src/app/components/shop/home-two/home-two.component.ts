@@ -34,6 +34,7 @@ export class HomeTwoComponent implements OnInit {
   constructor(private productService: ProductService, private cartService: CartService) { }
 
   ngOnInit() {
+   
     this.cartService.getItems().subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
     this.productService.getProducts()
     .subscribe(

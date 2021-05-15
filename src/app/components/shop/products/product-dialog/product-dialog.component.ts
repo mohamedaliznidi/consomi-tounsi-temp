@@ -25,7 +25,6 @@ export class ProductDialogComponent implements OnInit {
 
   }
 
-
   public addToCart(product: Product, quantity) {
     if (quantity == 0) return false;
     this.cartService.addToCart(product, parseInt(quantity));

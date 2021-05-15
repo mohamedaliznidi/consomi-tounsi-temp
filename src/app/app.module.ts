@@ -8,10 +8,7 @@ import { DemoComponent } from './components/demo/demo.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxImgZoomModule } from 'ngx-img-zoom';
 
-
 import { MainComponent } from './components/main/main.component';
-
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { ShopModule } from './components/shop/shop.module';
@@ -37,7 +34,8 @@ import { SharedModule } from './components/shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgxImgZoomModule
+    NgxImgZoomModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

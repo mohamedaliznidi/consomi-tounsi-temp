@@ -102,5 +102,8 @@ generateId(){
       { headers: reqHeader });
 
   }
+  public deleteBasket(id){
+    return this.http.delete('http://localhost:8081/api/clients/deletebasket/'+id);
+  }
   
 }

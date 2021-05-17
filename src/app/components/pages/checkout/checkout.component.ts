@@ -18,7 +18,7 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./checkout.component.sass']
 })
 export class CheckoutComponent implements OnInit {
-
+  public shoppingCartItems  : CartItem[] = [];
   public cartItems: Observable<CartItem[]> = of([]);
   public buyProducts: CartItem[] = [];
   displaySucess: boolean = false;
@@ -102,6 +102,15 @@ export class CheckoutComponent implements OnInit {
         return 0;
     }
   }
+  public removeBasket(id):void {
+    this.cart2Service.deleteBasket(id).subscribe((d) =>{
+      console.log("basket deleted");
+    }, error => {
+      console.log(error);
+      
+    });
+
+  }
 
   public addOrderC() {
     const x = {
@@ -119,6 +128,8 @@ export class CheckoutComponent implements OnInit {
       this.cart2Service.getInvoice(id).subscribe(data => {
         this.displaySucess = true;
       setTimeout(() => {
+
+        this.removeBasket(this.cart2Service.getBasketId());
         localStorage.clear();
         this.router.navigateByUrl('/home/two');
       }, 4000);

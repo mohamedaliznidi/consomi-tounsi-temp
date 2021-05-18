@@ -124,23 +124,32 @@ export class CheckoutComponent implements OnInit {
 
 
     this.cart2Service.addOrderC(x).subscribe(data => {
+      console.log(data);
       const id = data.id;
       this.cart2Service.getInvoice(id).subscribe(data => {
         this.displaySucess = true;
-      setTimeout(() => {
-
-        this.removeBasket(this.cart2Service.getBasketId());
-        localStorage.clear();
-        this.router.navigateByUrl('/home/two');
-      }, 4000);
+        console.log(data);
         var blob = new Blob([data], { type: 'application/pdf' });
         saveAs(blob, 'report.pdf');
+        console.log("111");
+      setTimeout(() => {
+        localStorage.clear();
+        this.cart2Service.sendMessage("clear");
+    
+        this.router.navigateByUrl('/home/two');
+      }, 4000);
+        
       }, error => {
+        console.log(error.error.text);
+        var blob = new Blob([error.error.text], { type: 'application/pdf' });
+        saveAs(blob, 'report.pdf');
         this.displaySucess = true;
+     console.log()
+          window.open(error.url, "_blank");
         setTimeout(() => {
           localStorage.clear();
           this.router.navigateByUrl('/home/two');
-        }, 4000);
+        }, 5000);
         console.log(error);
   
         // implimentation method of facture

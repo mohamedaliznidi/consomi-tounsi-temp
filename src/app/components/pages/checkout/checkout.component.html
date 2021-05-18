@@ -89,7 +89,7 @@
                     <li *ngFor="let item of buyProducts">
                        {{ item.product.name }} × {{ item.quantity }}
                       <span>
-                       {{ item.product.price * item.quantity  }} DT
+                       {{ item.product.price * item.quantity  }}DT
                         </span>
                     </li>
                 </ul>
@@ -121,14 +121,14 @@
               <ul class="total">
                 <li>Total <span class="count" *ngIf="finalPrice" >{{ finalPrice }}DT</span></li>
             </ul> 
-            <ul>
+            <!-- <ul>
               <li><h4>Shipping method</h4>
             <div class="paymentFinal">
               <mat-radio-group>
                 <mat-radio-button fxLayout="column" *ngFor="let payment of paymantWay" [value]="payment">{{payment}}</mat-radio-button>
               </mat-radio-group>
             </div>
-          </li></ul>
+          </li></ul> -->
             <div class="order">
               <button (click)="addOrderC()" class="btn-project" mat-raised-button color="accent" type="submit" [disabled]="f.invalid">PLACE ORDER</button>
               <div *ngIf="displaySucess" style="background-color: #00C851;

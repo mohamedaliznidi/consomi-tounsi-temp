@@ -1,6 +1,7 @@
 import random from '@angular-devkit/schematics/src/rules/random';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { Item } from './item';
 
@@ -8,6 +9,7 @@ import { Item } from './item';
   providedIn: 'root'
 })
 export class Cart2Service {
+  private subject = new Subject<any>();
 
   constructor(private http: HttpClient) { }
 
@@ -63,6 +65,7 @@ generateId(){
   // }
   addItem(data: Item) {
     data.id = this.generateId();
+    console.log(data);
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post('http://localhost:8081/api/clients/additem',
       JSON.stringify(data),
@@ -105,5 +108,19 @@ generateId(){
   public deleteBasket(id){
     return this.http.delete('http://localhost:8081/api/clients/deletebasket/'+id);
   }
+
+ 
+
+    sendMessage(message: string) {
+        this.subject.next({ text: message });
+    }
+
+    clearMessages() {
+        this.subject.next();
+    }
+
+    getMessage(): Observable<any> {
+        return this.subject.asObservable();
+    }
   
 }

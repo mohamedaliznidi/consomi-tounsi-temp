@@ -13,6 +13,7 @@ export class Product {
   salePrice?: number;
   discount?: number;
   pictures?: string;
+  image?: string;
   shortDetails?: string;
   description?: string;
   stock?: number;

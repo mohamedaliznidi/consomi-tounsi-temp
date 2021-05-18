@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Observable, of } from 'rxjs';
 import { CartItem } from 'src/app/modals/cart-item';
 import { CartService } from '../../shared/services/cart.service';
@@ -13,15 +14,31 @@ export class CartComponent implements OnInit {
 
   public cartItems : Observable<CartItem[]> = of([]);
   public shoppingCartItems  : CartItem[] = [];
+  subscription: Subscription;
 
+  constructor(private cartService: CartService, private cart2service: Cart2Service) { 
+    
 
-  constructor(private cartService: CartService, private cart2service: Cart2Service) { }
+    
+        
+  }
 
   ngOnInit() {
-    this.cartItems = this.cartService.getItems();
+    // this.cartItems = this.cartService.getItems();
     this.getItemsList();
     // this.cartItems.subscribe(shoppingCartItems => this.shoppingCartItems = shoppingCartItems);
-  
+ 
+
+// subscribe to home component messages
+this.cart2service.getMessage().subscribe(message => {
+  if (message) {
+    this.shoppingCartItems=[];
+    console.log("basket deleted");
+  } 
+  else {
+    console.log("basket deleted**error***");
+  }
+});
 
   }
 
@@ -68,4 +85,5 @@ export class CartComponent implements OnInit {
       }, 0);
       return total;
     }
+
 }

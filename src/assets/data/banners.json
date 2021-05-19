@@ -1,7 +1,7 @@
 [
-    { "title": "New Laptops", "subtitle": "Sale up to 30% off all products in the new collection.", "image": "assets/images/product/laptop.png" },
-    { "title": "Tablets, Smartphones and more", "subtitle": "Sale up to 30%.", "image": "assets/images/product/tablet.png" },
-    { "title": "New Cameras Collection", "subtitle": "Sale up to 30%.", "image": "assets/images/product/cameras.png" },
-    { "title": "Cach Big Offers on Cameras", "subtitle": "Sale up to 20%.", "image": "assets/images/product/mobiles.png" },
+    { "title": "New Laptops", "subtitle": "Sale up to 30% off all products in the new collection.", "image": "https://www.livrini.tn/public/uploads/1619058780-h-500-boisson-lactee.jpg" },
+    { "title": "Tablets, Smartphones and more", "subtitle": "Sale up to 30%.", "image": "https://www.cdiscount.com/pdt2/0/0/0/1/700x700/ge617213000/rw/garnier-ultra-doux-shampoing-olive-mythique-200m.jpg" },
+    { "title": "New Cameras Collection", "subtitle": "Sale up to 30%.", "image": "https://lh3.googleusercontent.com/proxy/mGOJ5zKzIxsPbuzHo1SJAX8QfLiSe0IvztCs6Yg-neGY5ja6yQvQpl5wi1nQ5Ze_wWVAdr_doz73z1P-t1qO9d9wAsQivm_X3QSt1FOHxLYyDQ" },
+    { "title": "Cach Big Offers on Cameras", "subtitle": "Sale up to 20%.", "image": "https://i.ytimg.com/vi/vB0hk1f3gBQ/maxresdefault.jpg" },
     { "title": "Big offer on Smartphones", "subtitle": "Sale up to 20%.", "image": "assets/images/product/cameras.png" }
   ]

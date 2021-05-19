@@ -148,7 +148,7 @@ export class CheckoutComponent implements OnInit {
           window.open(error.url, "_blank");
         setTimeout(() => {
           localStorage.clear();
-          this.router.navigateByUrl('/home/two');
+          this.router.navigateByUrl('/home/one');
         }, 5000);
         console.log(error);
   

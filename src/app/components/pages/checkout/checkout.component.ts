@@ -9,6 +9,7 @@ import { NgModel } from '@angular/forms';
 import { Order } from '../../shop/order';
 import { BillInformation } from '../../shop/billInformation';
 import { saveAs } from 'file-saver';
+import { ICreateOrderRequest, IPayPalConfig,  } from 'ngx-paypal';
 
 
 
@@ -18,6 +19,11 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./checkout.component.sass']
 })
 export class CheckoutComponent implements OnInit {
+  public payPalConfig ? : IPayPalConfig;
+  showSuccess;
+
+
+
   public shoppingCartItems  : CartItem[] = [];
   public cartItems: Observable<CartItem[]> = of([]);
   public buyProducts: CartItem[] = [];
@@ -62,6 +68,8 @@ export class CheckoutComponent implements OnInit {
     this.cart2Service.getItemList().subscribe(products => this.buyProducts = products);
     this.message = "Thank you " + this.billInfo.firstName + " your order process successfully completed";
     this.message2 = "you have to download your invoice to get your order";
+    this.initConfig();
+    console.log('payPalConfig is ' + this.payPalConfig);
 
   }
 
@@ -169,6 +177,63 @@ export class CheckoutComponent implements OnInit {
 
   }
  
-
+  private initConfig(): void {
+    this.payPalConfig = {
+      currency: 'DT',
+      clientId: 'sb',
+      createOrderOnClient: (data) => <ICreateOrderRequest> {
+        intent: 'CAPTURE',
+        purchase_units: [
+          {
+            amount: {
+              currency_code: 'EUR',
+              value: '9.99',
+              breakdown: {
+                item_total: {
+                  currency_code: 'EUR',
+                  value: '9.99'
+                }
+              }
+            },
+            items: [
+              {
+                name: 'Consomi Tounsi',
+                quantity: '1',
+                category: 'DIGITAL_GOODS',
+                unit_amount: {
+                  currency_code: 'EUR',
+                  value: '9.99',
+                },
+              }
+            ]
+          }
+        ]
+      },
+      
+      style: {
+        label: 'paypal',
+        layout: 'vertical'
+      },
+      onApprove: (data, actions) => {
+        console.log('onApprove - transaction was approved, but not authorized', data, actions);
+        actions.order.get().then(details => {
+          console.log('onApprove - you can get full order details inside onApprove: ', details);
+        });
+      },
+      onClientAuthorization: (data) => {
+        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        this.showSuccess = true;
+      },
+      onCancel: (data, actions) => {
+        console.log('OnCancel', data, actions);
+      },
+      onError: err => {
+        console.log('OnError', err);
+      },
+      onClick: () => {
+        console.log('onClick');
+      },
+    };
+  }
   
   }

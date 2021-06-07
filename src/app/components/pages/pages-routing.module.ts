@@ -9,6 +9,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { FaqComponent } from './faq/faq.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import {AuthGuard} from "./auth.guard";
 
 
 
@@ -19,7 +20,8 @@ const routes: Routes = [
     children: [
       { path: 'about', component: AboutUsComponent },
       { path: 'cart', component: CartComponent },
-      { path: 'checkout', component: CheckoutComponent },
+      { path: 'checkout',canActivate: [AuthGuard],
+      component: CheckoutComponent },
       { path: 'faq', component: FaqComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'wishlist', component: WishlistComponent },

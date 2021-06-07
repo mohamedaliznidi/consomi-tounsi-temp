@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
+    localStorage.setItem('token', "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2hhbWVkIiwiYXV0aG9yaXRpZXMiOlsiQ0xJRU5UIl0sImlhdCI6MTYyMzA5MTEwMSwiZXhwIjoxNjIzMTc3NTAxfQ.Nd17c6qdM5R90CVmwSBye__QnNmpGaLFIRxCpw5Ombvk0irua662WcNF4ZPlTCeLEh6zUt8gY8Pwl3rfpM_Iww");
     this.productService.getBanners()
     .subscribe(
       data => this.banners = data

@@ -4,6 +4,13 @@ import { Observable, of } from 'rxjs';
 import { CartItem } from 'src/app/modals/cart-item';
 import { CartService } from '../../shared/services/cart.service';
 import { Cart2Service } from '../../shop/cart.service';
+import jwt_decode from 'jwt-decode';
+export interface DToken {
+  authorities: string[];
+  exp: number;
+  iat: number;
+  sub: string;
+}
 
 @Component({
   selector: 'app-cart',
@@ -15,6 +22,7 @@ export class CartComponent implements OnInit {
   public cartItems : Observable<CartItem[]> = of([]);
   public shoppingCartItems  : CartItem[] = [];
   subscription: Subscription;
+  public Token: string;
 
   constructor(private cartService: CartService, private cart2service: Cart2Service) { 
     
@@ -85,5 +93,10 @@ this.cart2service.getMessage().subscribe(message => {
       }, 0);
       return total;
     }
-
+public isClient(): boolean{
+  this.Token=localStorage.getItem('token');
+  const decoded: DToken = jwt_decode(this.Token);
+  console.log(decoded);
+  return true;
+}
 }

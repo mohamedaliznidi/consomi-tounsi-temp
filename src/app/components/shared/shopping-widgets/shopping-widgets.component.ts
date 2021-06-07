@@ -24,6 +24,7 @@ export class ShoppingWidgetsComponent implements OnInit {
   constructor(private cartService: CartService, public productService: ProductService, private cart2service: Cart2Service) { }
 
   ngOnInit() {
+    this.getTotal();
 
   }
   // public updateCurrency(curr) {

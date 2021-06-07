@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.currency = this.currencies[0];
     this.flag = this.flags[0];
+    this.shoppingCartItems;
   }
 
   public changeCurrency(currency){

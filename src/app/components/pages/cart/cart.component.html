@@ -25,10 +25,10 @@
                <div class="mat-cell text-muted">
                   <div fxLayout="row" fxLayout.xs="column"  class="text-muted">
                      <div fxLayout="row" fxLayoutAlign="center start">
-                        <button mat-icon-button matTooltip="Remove" (click)="decrement(item)">
+                        <button mat-icon-button matTooltip="Remove" min="1" (click)="decrement(item)">
                            <mat-icon>remove</mat-icon>
                         </button>
-                        <input type="text" name="quantity"  [(ngModel)]="item.quantity" disabled class="form-control input-number">
+                        <input type="text" name="quantity"  min="1" [(ngModel)]="item.quantity" disabled class="form-control input-number">
                         <button mat-icon-button matTooltip="Add" (click)="increment(item)">
                            <mat-icon>add</mat-icon>
                         </button>
@@ -57,7 +57,7 @@
                      <span class="new-price">Grand total: {{getTotal1() }} DT</span>
                   </div>
                </div>
-               <div class="mat-cell text-center"><a mat-raised-button  class="btn-project" [routerLink]="['/pages/checkout']" routerLinkActive="router-link-active" >Proceed To Checkout</a>
+               <div class="mat-cell text-center"><a mat-raised-button  class="btn-project" [routerLink]="['/pages/checkout']" routerLinkActive="router-link-active" (click)="isClient()" >Proceed To Checkout</a>
                   <!-- <a mat-flat-button color="primary">Add to Donation</a> -->
                </div>
             </div>

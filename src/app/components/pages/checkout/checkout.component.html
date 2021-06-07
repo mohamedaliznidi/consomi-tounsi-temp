@@ -112,6 +112,12 @@
                           <mat-radio-button value="0" (click)="paymentMethod(paymentss)" >PAYPAL</mat-radio-button>
                           <mat-radio-button style="width: 120px" value="1" (click)="paymentMethod(payments)">CASH</mat-radio-button>
                         </mat-radio-group>
+                        <div >
+                          <div >
+                            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                            
+                          </div>
+                        </div>
 
                       </div>
 
@@ -144,6 +150,9 @@
                   font-size: 18px;">{{this.message2}}</p>
               </div>
             </div>
+         
+           
+
                </div>
           </div>
           </div>

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgxPayPalModule } from 'ngx-paypal';
 import { CommonModule } from '@angular/common';
 
 import { CartComponent } from './cart/cart.component';
@@ -17,6 +18,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import {AuthGuard} from "./auth.guard";
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import {AuthGuard} from "./auth.guard";
     ReactiveFormsModule,
     PagesRoutingModule,
     SharedModule,
-    BlogModule
+    BlogModule,
+    NgxPayPalModule,
   ],
   declarations: [
     CartComponent,

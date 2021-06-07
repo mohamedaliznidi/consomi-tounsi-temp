@@ -18,11 +18,12 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "skipDefaultLibCheck": true
   },
   "peerDependencies": {
     "typescript": "3.6.4",
-    "tslib": "1.10.0"
+    "tslib": "1.10.0" 
   },
   "angularCompilerOptions": {
     "enableIvy": false

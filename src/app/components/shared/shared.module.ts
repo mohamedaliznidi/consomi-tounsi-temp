@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
-
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
@@ -40,6 +38,8 @@ import { HeaderFourComponent } from './header-four/header-four.component';
 import { CategoriesMenuComponent } from './categories-menu/categories-menu.component';
 import { CategoriesSectionComponent } from './categories-section/categories-section.component';
 import { FooterTwoComponent } from './footer-two/footer-two.component';
+import { Cart2Service } from '../shop/cart.service';
+
 
 
 
@@ -126,7 +126,8 @@ import { FooterTwoComponent } from './footer-two/footer-two.component';
   ],
   providers: [
     ProductService,
-    CartService
+    CartService,
+    Cart2Service
   ]
 })
 export class SharedModule {}

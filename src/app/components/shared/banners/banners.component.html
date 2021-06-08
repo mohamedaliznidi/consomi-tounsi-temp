@@ -2,6 +2,7 @@
 <div *ngFor="let slide of slides1">
     <div *ngIf="slide.publicitycategory==='Balise4' || slide.publicitycategory==='Balise5'">
 
+
 <div class="banners-container" fxLayout="column" fxLayout.gt-sm="row"  >
 
   <div class="sec-padding" fxLayout="row" fxLayout.gt-sm="column" fxLayout.xs="column" fxFlex="100" fxFlex.gt-sm="100" class="baners" style="width: 100px; float:right; height:500px; margin:100px" >
@@ -11,11 +12,11 @@
                <h4>{{slide.title}}</h4>
                <p>{{slide.subtitle}}</p>
                <a href="/home/products/{{slide.product.nature}}">Shop Now</a>
+
            </div>
        </div>
      </div>
    </div>
-
  </div>
 
 </div>

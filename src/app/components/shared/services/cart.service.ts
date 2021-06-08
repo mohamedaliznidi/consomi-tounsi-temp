@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CartItem } from 'src/app/modals/cart-item';
 import { map } from 'rxjs/operators';
 import { Observable, BehaviorSubject, Subscriber } from 'rxjs';
-
+import { Cart2Service } from '../../shop/cart.service';
 // Get product from Localstorage
 let products = JSON.parse(localStorage.getItem("cartItem")) || [];
 
@@ -17,7 +17,10 @@ export class CartService {
 public cartItems  :  BehaviorSubject<CartItem[]> = new BehaviorSubject([]);
 public observer   :  Subscriber<{}>;
 
-  constructor(public snackBar: MatSnackBar) {
+  constructor(public snackBar: MatSnackBar, public cart2service: Cart2Service) {
+    // if(!this.getBasketId()){
+    //   this.setBasketId();
+    // }
     this.cartItems.subscribe(
       products => products = products
     );
@@ -79,9 +82,6 @@ public calculateStockCounts(product: CartItem, quantity): CartItem | Boolean {
 }
 
 
-
-
-
 // Removed in cart
 public removeFromCart(item: CartItem) {
   if (item === undefined) return false;
@@ -101,6 +101,7 @@ public getTotalAmount(): Observable<number> {
 
 // Update Cart Value
 public updateCartQuantity(product: Product, quantity: number): CartItem | boolean {
+
   return products.find((items, index) => {
     if(items.product.id == product.id) {
       let qty = products[index].quantity + quantity;
@@ -112,6 +113,5 @@ public updateCartQuantity(product: Product, quantity: number): CartItem | boolea
     }
   });
 }
-
 
 }

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgxPayPalModule } from 'ngx-paypal';
 import { CommonModule } from '@angular/common';
 
 import { CartComponent } from './cart/cart.component';
@@ -14,7 +15,12 @@ import { FaqComponent } from './faq/faq.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { BlogModule } from '../blog/blog.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
+
+import {AuthGuard} from "./auth.guard";
+
+
 import { HammerModule } from '@angular/platform-browser';
+
 
 
 @NgModule({
@@ -24,7 +30,8 @@ import { HammerModule } from '@angular/platform-browser';
     ReactiveFormsModule,
     PagesRoutingModule,
     SharedModule,
-    BlogModule
+    BlogModule,
+    NgxPayPalModule,
   ],
   declarations: [
     CartComponent,
@@ -38,6 +45,7 @@ import { HammerModule } from '@angular/platform-browser';
     ErrorPageComponent,
     HammerModule
 
-  ]
+  ],
+  providers: [AuthGuard]
 })
 export class PagesModule { }

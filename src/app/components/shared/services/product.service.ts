@@ -16,7 +16,12 @@ let products = JSON.parse(localStorage.getItem("compareItem")) || [];
   providedIn: 'root'
 })
 export class ProductService {
+
+  
+  public dinar: string='DT';
+
   public currency : string = 'DT';
+
   public catalogMode : boolean = false;
 
 

@@ -17,16 +17,7 @@
                  </span>
               <div fxLayout="row" class="welcome-message">
                 <div class="widget-text">
-                  <a mat-button [matMenuTriggerFor]="currencyMenu" #currencyMenuTrigger="matMenuTrigger">
-                    {{currency}}<mat-icon class="mat-icon-sm caret cur-icon">arrow_drop_down</mat-icon>
-                  </a>
-                  <mat-menu #currencyMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
-                    <span>
-                        <button mat-menu-item *ngFor="let cur of currencies" (click)="changeCurrency(cur)">
-                            <span>{{cur}}</span>
-                        </button>
-                    </span>
-                </mat-menu>
+                  
                 </div>
                 <div class="widget-text">
                   <a mat-button [matMenuTriggerFor]="langMenu" #langMenuTrigger="matMenuTrigger">

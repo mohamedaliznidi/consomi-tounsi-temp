@@ -10,6 +10,7 @@ export class Product {
 
 
 
+
 id? : number;
 name?:string;
 categoryname?:string;
@@ -26,6 +27,7 @@ matiere?:number;
 energie?:number;
 matiere_grasse?:number;
 description?:string;
+
 
   constructor(
     id?: number, 

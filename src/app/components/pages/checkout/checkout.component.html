@@ -1,66 +1,70 @@
 <div class="container">
   <div class="checkout sec-padding">
       <div fxLayout="row wrap" class="">
+        
+
+
+        
           <div class="billing-details  pr-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
             <div class="header-title">
-                <h2>Billing Details</h2>
+                <h2>Billing Details</h2><h4> (Customer information)</h4>
             </div>
 
-              <form fxLayout="row wrap">
+              <form fxLayout="row wrap" #f="ngForm">
                   <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
                       <mat-form-field class="w-100">
-                          <input matInput placeholder="First name (required)" #name="ngModel" ngModel name="name" required>
+                        <input matInput placeholder="First name (required)" #name="ngModel" ngModel name="name" required  [(ngModel)]="this.billInfo.firstName">
                           <mat-error *ngIf="name.invalid">Please enter a valid message</mat-error>
                         </mat-form-field>
                   </div>
                   <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                       <mat-form-field class="w-100">
-                          <input matInput placeholder="Last name (required)" #email="ngModel" ngModel name="email" required>
+                          <input matInput placeholder="Last name (required)" #email="ngModel" ngModel name="email" required [(ngModel)]="this.billInfo.lastName" >
                           <mat-error *ngIf="email.invalid">Please enter a valid message</mat-error>
                         </mat-form-field>
                   </div>
-                  <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                  <!-- <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                       <mat-form-field class="w-100">
                           <input matInput placeholder="Company name (optional)" #subject="ngModel" ngModel name="subject">
                         </mat-form-field>
-                  </div>
+                  </div> -->
                   <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                       <mat-form-field class="w-100">
-                          <input matInput placeholder="Address" #address="ngModel" ngModel name="address">
+                          <input matInput placeholder="Address" #address="ngModel" ngModel name="address" required [(ngModel)]="this.billInfo.adress">
                           <mat-error *ngIf="address.invalid">Please enter a valid message</mat-error>
                         </mat-form-field>
                   </div>
                   <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                       <mat-form-field class="w-100">
-                          <input matInput placeholder="Town/city" #town="ngModel" ngModel name="town/city">
+                          <input matInput placeholder="Town/city" #town="ngModel" ngModel name="town/city" required [(ngModel)]="this.billInfo.city">
                           <mat-error *ngIf="town.invalid">Please enter a valid message</mat-error>
                         </mat-form-field>
                   </div>
                   <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
                       <mat-form-field class="w-100">
-                          <input matInput placeholder="State / Country (required)" #state="ngModel" ngModel name="state" required>
+                          <input matInput placeholder="State / Country (required)" #state="ngModel" ngModel name="state" required [(ngModel)]="this.billInfo.state">
                           <mat-error *ngIf="state.invalid">Please enter a valid message</mat-error>
                         </mat-form-field>
                   </div>
                   <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                       <mat-form-field class="w-100">
-                          <input matInput placeholder="Postcode / zip (required)" #postcode="ngModel" ngModel name="postcode" required>
-                          <mat-error *ngIf="postcode.invalid">Please enter a valid message</mat-error>
+                          <input matInput placeholder="Postcode / zip (required)" #postcode="ngModel" ngModel name="postcode" pattern="[0-9]{4}" required [(ngModel)]="this.billInfo.zip" >
+                          <mat-error *ngIf="postcode.invalid">Please enter a valid message: 4 numbers required</mat-error>
                         </mat-form-field>
                   </div>
-                  <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
+                  <!-- <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="mt-20 pr-5" ngClass.sm="mt-10" ngClass.xs="mt-10">
                       <mat-form-field class="w-100">
                           <input matInput placeholder="Email Address (required)" #email="ngModel" ngModel name="email" required>
                           <mat-error *ngIf="email.invalid">Please enter a valid message</mat-error>
                         </mat-form-field>
-                  </div>
+                  </div> -->
                   <div  fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50" class="pl-5 mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                       <mat-form-field class="w-100">
-                          <input matInput placeholder="Phone (required)" #phone="ngModel" ngModel name="phone" required>
-                          <mat-error *ngIf="phone.invalid">Please enter a valid message</mat-error>
+                          <input matInput placeholder="Phone (required)" #phone="ngModel" ngModel name="phone" pattern="[0-9]{8}" required [(ngModel)]="this.billInfo.phone">
+                          <mat-error *ngIf="phone.invalid">Please enter a valid message: Must contain 8 digits</mat-error>
                         </mat-form-field>
                   </div>
-                  <div class="add-info">
+                  <!-- <div class="add-info">
                     <h3>Additional information</h3>
                     <p class="text-muted">Order notes (optional)</p>
 
@@ -72,7 +76,7 @@
                   </div>
                   <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
                       <button class="btn-project" mat-raised-button color="accent" type="submit">Submit Review</button>
-                    </div>
+                    </div> -->
                   </form>
           </div>
           <div class="mainOrder-wrapper pl-15" fxFlex="100" fxFlex.gt-md="50" fxFlex.md="50">
@@ -85,7 +89,7 @@
                     <li *ngFor="let item of buyProducts">
                        {{ item.product.name }} × {{ item.quantity }}
                       <span>
-                       {{ item.product.price * item.quantity | currency:productService?.currency:'symbol' }}
+                       {{ item.product.price * item.quantity  }}DT
                         </span>
                     </li>
                 </ul>
@@ -94,31 +98,61 @@
                  </ul>
                 <ul class="total-amount">
                   <li>
-                    Subtotal <span class="amount">{{ getTotal() | async | currency:productService?.currency:'symbol'}}</span>
+                    Subtotal <span class="amount">{{ getTotal()}}DT</span> <!--getTotal() | async | currency:productService?.currency:'symbol'-->
                   </li>
                   <li *ngIf='buyProducts.length'>
-                    Shipping
+                    Payment Method
                    <div class="shipping">
                       <div class="shopping-option">
-                        <mat-radio-group>
-                          <mat-radio-button *ngFor="let payment of payments" [value]="payment">{{payment}}</mat-radio-button>
+                        <!-- <mat-radio-group>
+                          <mat-radio-button (click)="paymentMethod(payment)" style="display: block;" *ngFor="let payment of payments" [value]="payment" required >{{payment}} </mat-radio-button>
+                        </mat-radio-group> -->
+
+                        <mat-radio-group aria-label="Select an option" [(ngModel)]="orderC.paymentMethode" name="" class="form-control"  style="display: block;">
+                          <mat-radio-button value="0" (click)="paymentMethod(paymentss)" >PAYPAL</mat-radio-button>
+                          <mat-radio-button style="width: 120px" value="1" (click)="paymentMethod(payments)">CASH</mat-radio-button>
                         </mat-radio-group>
+                        <div >
+                          <div >
+                            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                            
+                          </div>
+                        </div>
+
                       </div>
 
                    </div>
                   </li>
               </ul>
               <ul class="total">
-                <li>Total <span class="count">{{ getTotal() | async | currency:productService?.currency:'symbol'}}</span></li>
-            </ul>
+                <li>Total <span class="count" *ngIf="finalPrice" >{{ finalPrice }}DT</span></li>
+            </ul> 
+            <!-- <ul>
+              <li><h4>Shipping method</h4>
             <div class="paymentFinal">
               <mat-radio-group>
                 <mat-radio-button fxLayout="column" *ngFor="let payment of paymantWay" [value]="payment">{{payment}}</mat-radio-button>
               </mat-radio-group>
             </div>
+          </li></ul> -->
             <div class="order">
-              <button class="btn-project" mat-raised-button color="accent" type="submit">PLACE ORDER</button>
+              <button (click)="addOrderC()" class="btn-project" mat-raised-button color="accent" type="submit" [disabled]="f.invalid">PLACE ORDER</button>
+              <div *ngIf="displaySucess" style="background-color: #00C851;
+              margin-top: 30px;
+              padding: 30px;
+              border-radius: 30px;
+              font-style: italic;
+              color: white;">          
+                  <p style="font-size: 25px;">
+                    {{this.message}}
+                  </p>
+                  <p style="margin-top: 20px;
+                  font-size: 18px;">{{this.message2}}</p>
+              </div>
             </div>
+         
+           
+
                </div>
           </div>
           </div>

@@ -8,15 +8,17 @@ import { DemoComponent } from './components/demo/demo.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxImgZoomModule } from 'ngx-img-zoom';
 
-
 import { MainComponent } from './components/main/main.component';
-
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { ShopModule } from './components/shop/shop.module';
 import { SharedModule } from './components/shared/shared.module';
+
+import { NgxPayPalModule } from 'ngx-paypal';
+
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -39,8 +41,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     AppRoutingModule,
     NgxImgZoomModule,
+
+    HttpClientModule,
+    NgxPayPalModule
+    
+
     NoopAnimationsModule,
     NgbModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

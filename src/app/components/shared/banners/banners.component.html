@@ -1,57 +1,23 @@
 
-<div class="banners-container" fxLayout="column" fxLayout.gt-sm="row" *ngIf="banners.length > 0">
+<div *ngFor="let slide of slides1">
+    <div *ngIf="slide.publicitycategory==='Balise4' || slide.publicitycategory==='Balise5'">
 
-  <div class="sec-padding" fxLayout="row" fxLayout.gt-sm="column" fxLayout.xs="column" fxFlex="100" fxFlex.gt-sm="100" class="baners">
-     <div class="baner first"  [ngStyle]="getBgImage(0)">
-       <div class="info">
-           <div class="text-box">
-               <h4>New "Deli Shake"</h4>
-               <p>New summer collection</p>
-               <a href="#">Shop Now</a>
+
+<div class="banners-container" fxLayout="column" fxLayout.gt-sm="row"  >
+
+  <div class="sec-padding" fxLayout="row" fxLayout.gt-sm="column" fxLayout.xs="column" fxFlex="100" fxFlex.gt-sm="100" class="baners" style="width: 100px; float:right; height:500px; margin:100px" >
+     <div class="baner first"  [ngStyle]="getBgImage(slide)"    >
+       <div class="info" >
+           <div  class="text-box">
+               <h4>{{slide.title}}</h4>
+               <p>{{slide.subtitle}}</p>
+               <a href="/home/products/{{slide.product.nature}}">Shop Now</a>
+
            </div>
        </div>
      </div>
    </div>
-   <div fxLayout="row" fxLayout.gt-sm="column" fxLayout.xs="column" fxFlex="100" fxFlex.gt-sm="60">
-       <div class="bn-wrap" fxLayout="column" fxLayout.gt-sm="row" fxFlexOrder="2" fxFlexOrder.gt-sm="1" fxFlex="50" fxFlex.gt-sm="33">
-           <div class="baner seccond" fxFlex [ngStyle]="getBgImage(1)">
-               <div class="info" >
-                   <div class="text-box w-50" fxLayout="column" >
-                       <h4>Garnier olive and more soon</h4>
-                      <p>{{getBanner(1).subtitle}}</p>
-               <a href="#">Shop Now</a>
-                   </div>
-               </div>
-           </div>
-           <div class="baner seccond pd-xs" fxFlex [ngStyle]="getBgImage(2)">
-               <div class="info" >
-                   <div class="text-box w-50" fxLayout="column" >
-                       <h4>New Face Cream soon..</h4>
-                      <p>{{getBanner(2).subtitle}}</p>
-               <a href="#">Shop Now</a>
-                   </div>
-               </div>
-           </div>
-       </div>
-       <div class="baner seccond mg-xs-0" fxFlexOrder="1" fxFlexOrder.gt-sm="2" fxFlex="50" fxFlex.gt-sm="100" [ngStyle]="getBgImage(3)">
-           <div class="info" >
-               <div class="text-box w-50 pt-40 " fxLayout="column" >
-                   <h4 class="big-title">     </h4>
-                   <br>
-                   <br>
-                   <p></p>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                   <br>
-                  <p>{{getBanner(3).subtitle}}</p>
-           <a href="#" class="big-price">60DT</a>
-               </div>
-           </div>
-       </div>
-   </div>
  </div>
 
+</div>
+</div>

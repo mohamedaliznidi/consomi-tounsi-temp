@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoComponent } from './components/demo/demo.component';
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -13,7 +13,11 @@ import { MainComponent } from './components/main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShopModule } from './components/shop/shop.module';
 import { SharedModule } from './components/shared/shared.module';
+
 import { NgxPayPalModule } from 'ngx-paypal';
+
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -37,9 +41,14 @@ import { NgxPayPalModule } from 'ngx-paypal';
     ReactiveFormsModule,
     AppRoutingModule,
     NgxImgZoomModule,
+
     HttpClientModule,
     NgxPayPalModule
     
+
+    NoopAnimationsModule,
+    NgbModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

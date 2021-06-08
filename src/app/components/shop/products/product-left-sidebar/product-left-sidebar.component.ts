@@ -31,15 +31,15 @@ export class ProductLeftSidebarComponent implements OnInit {
         this.productService.getProductByCategory(category).subscribe(products => {
        this.allItems = products;
        this.products = products.slice(0.8);
-       this.getTags(products)
-       this.getColors(products)
+       //this.getTags(products)
+       //this.getColors(products)
         })
       }
     )
   }
 
 
-
+/** 
      // Get current product tags
      public getTags(products) {
       var uniqueBrands = []
@@ -75,7 +75,7 @@ export class ProductLeftSidebarComponent implements OnInit {
       }
       this.colors = itemColor
    }
-
+*/
   ngOnInit() {
   }
 
@@ -109,6 +109,7 @@ export class ProductLeftSidebarComponent implements OnInit {
       this.animation == 'fadeOut' ? this.fadeIn() : this.fadeOut(); // animation
    }
 
+   /** 
      // Initialize filetr Items
   public filterItems(): Product[] {
     return this.items.filter((item: Product) => {
@@ -129,7 +130,7 @@ export class ProductLeftSidebarComponent implements OnInit {
         return Colors && Tags; // return true
     });
 
-}
+}*/
 
 public onPageChanged(event){
   this.page = event;
@@ -167,7 +168,7 @@ onBrendsChanged(newBrend) {
   console.log(newBrend);
   this.allItems = newBrend === 'all' ? this.products : this.products.filter(
 
-    item => item.brand === newBrend
+    item => item.categoryname === newBrend.categoryName
   )
   console.log(this.allItems);
 

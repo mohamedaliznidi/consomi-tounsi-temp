@@ -6,15 +6,29 @@ import { MatDialog } from '@angular/material';
 import { CartService } from 'src/app/components/shared/services/cart.service';
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ProductZoomComponent } from './product-zoom/product-zoom.component';
+import { CommentsService } from './comments.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+
+export class comments{
+  idc : number;
+  idp:number;
+  content:string;
+  rate:number;
+  date1: Date;
+      
+  }
+
 
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.sass']
+  styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
-
+  public comments : comments[];
+  public Acomment : comments = new comments();
   public config: SwiperConfigInterface={};
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
 
@@ -25,26 +39,49 @@ export class ProductDetailsComponent implements OnInit {
   public products           :   Product[] = [];
 
   public image: any;
-  public zoomImage: any;
+  public zoomImage: any; 
 
   public counter            :   number = 1;
-
+  public id : number;
   index: number;
   bigProductImageIndex = 0;
 
-  constructor(private route: ActivatedRoute, public productsService: ProductService, public dialog: MatDialog, private router: Router, private cartService: CartService) {
+  constructor(private route: ActivatedRoute, public productsService: ProductService, public dialog: MatDialog, private router: Router, private cartService: CartService,private commentsservice : CommentsService,config: NgbRatingConfig) {
     this.route.params.subscribe(params => {
-      const id = +params['id'];
-      this.productsService.getProduct(id).subscribe(product => this.product = product)
+      this.id = +params['id'];
+      config.max = 5;
+    config.readonly = true;
+      this.productsService.getProduct(this.id).subscribe(product => this.product = product)
+      
     });
+    
    }
 
   ngOnInit() {
     this.productsService.getProducts().subscribe(product => this.products = product);
-
-
     this.getRelatedProducts();
+    this.getcomments(this.id);
   }
+
+  
+  public getcomments(id): void {
+    this.commentsservice.getPComments(id).subscribe(
+
+        (response: comments[])=> {
+          this.comments=response;
+          
+
+            
+      
+
+        },
+        (error: HttpErrorResponse)=> {
+          alert(error.message);
+        }
+      );
+      }
+
+  
 
 
   ngAfterViewInit() {
@@ -162,6 +199,14 @@ public openZoomViewer(){
     panelClass: 'zoom-dialog'
   });
 }
+
+message:any;
+onSubmit(id){
+let resp=this.commentsservice.addComment(id,1,this.Acomment);
+   resp.subscribe((data)=>{this.message=data;this.getcomments(id)});
+}
+
+
 
 
 

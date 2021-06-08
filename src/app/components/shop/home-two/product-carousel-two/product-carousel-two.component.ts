@@ -97,12 +97,19 @@ export class ProductCarouselTwoComponent implements OnInit {
     return isNaN(parseInt(localStorage.getItem("basketID")));
   }
 
+
   // public getBasketId() {
   //   return parseInt(localStorage.getItem("basketID"));
   // }
   public setBasketId(id: string) {
     localStorage.setItem("basketID", id);
   }
+
+   // Add to compare
+ /*  public addToCompare(product: Product) {
+     this.productsService.addToCompare(product);
+  }*/
+
 
 
 

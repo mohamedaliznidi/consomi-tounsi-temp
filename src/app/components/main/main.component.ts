@@ -7,6 +7,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { SidebarMenuService } from '../shared/sidebar/sidebar-menu.service';
 import { SidenavMenu } from '../shared/sidebar/sidebar-menu.model';
 
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -16,7 +17,7 @@ export class MainComponent implements OnInit {
 
   public sidenavMenuItems:Array<any>;
 
-  public currencies = ['USD', 'EUR'];
+  public currencies = ['DT'];
   public currency:any;
   public flags = [
     { name:'English', image: 'assets/images/flags/gb.svg' },

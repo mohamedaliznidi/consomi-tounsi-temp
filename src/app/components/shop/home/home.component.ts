@@ -4,6 +4,7 @@ import { Product } from 'src/app/modals/product.model';
 import { PublicityService } from './publicity.service';
 import { Publicity } from './publicity';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
     this.publicityservice.publicities().subscribe(
       (publicity: Publicity[]) => {
         this.slides1 = publicity;
+        console.log(this.slides1)
 
       }
     )

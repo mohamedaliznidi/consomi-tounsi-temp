@@ -8,7 +8,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class AppComponent {
 
-  title = 'ecommerce-sophia-new';
+  title = 'consomi-tounsi';
 
   constructor(private spinner: NgxSpinnerService) {}
 

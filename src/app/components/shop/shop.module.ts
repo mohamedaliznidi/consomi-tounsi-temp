@@ -30,9 +30,14 @@ import { PopularProductsComponent } from './widgets/popular-products/popular-pro
 import { HomeFourComponent } from './home-four/home-four.component';
 import { ProductZoomComponent } from './products/product-details/product-zoom/product-zoom.component';
 import { HomeFiveComponent } from './home-five/home-five.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { PublicityService } from './home/publicity.service';
 import { ProductService } from '../shared/services/product.service';
+import { HammerModule } from '@angular/platform-browser';
+
+
+
+
 
 
 @NgModule({
@@ -69,7 +74,8 @@ import { ProductService } from '../shared/services/product.service';
     FlexLayoutModule,
     NgxPaginationModule,
     NgxImageZoomModule.forRoot(),
-    NgbModule // <-- Add this line
+    NgbModule,
+    HammerModule// <-- Add this line
 
 
   ],

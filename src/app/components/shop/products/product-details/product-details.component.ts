@@ -10,7 +10,7 @@ import { CommentsService } from './comments.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 
-export interface comments{
+export class comments{
   idc : number;
   idp:number;
   content:string;
@@ -24,11 +24,11 @@ export interface comments{
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.sass']
+  styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
   public comments : comments[];
-
+  public Acomment : comments = new comments();
   public config: SwiperConfigInterface={};
   @Output() onOpenProductDialog: EventEmitter<any> = new EventEmitter();
 
@@ -60,7 +60,6 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
     this.productsService.getProducts().subscribe(product => this.products = product);
     this.getRelatedProducts();
-  
     this.getcomments(this.id);
   }
 
@@ -200,6 +199,14 @@ public openZoomViewer(){
     panelClass: 'zoom-dialog'
   });
 }
+
+message:any;
+onSubmit(id){
+let resp=this.commentsservice.addComment(id,1,this.Acomment);
+   resp.subscribe((data)=>{this.message=data;this.getcomments(id)});
+}
+
+
 
 
 

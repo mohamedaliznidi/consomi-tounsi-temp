@@ -21,5 +21,10 @@ export class CommentsService {
     getPComments(id: number): Observable<comments[]> {
       return this.http.get<comments[]>(`${this.apiserverUrl}/commentproduct/findproductcomments/`+id)
     }
+    addComment(productid,clientid,data){
 
+      const addendpoint =`${this.apiserverUrl}/commentproduct/addcomment/`+clientid +`/`+productid;
+      return this.http.post(addendpoint,data)
+    }
+  
 }

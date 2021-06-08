@@ -7,6 +7,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { SidebarMenuService } from '../shared/sidebar/sidebar-menu.service';
 import { SidenavMenu } from '../shared/sidebar/sidebar-menu.model';
 
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',

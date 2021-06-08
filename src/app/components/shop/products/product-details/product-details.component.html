@@ -42,6 +42,7 @@
                         <h2>{{product.name}} </h2>
                         <h4 *ngIf="!productsService?.catalogMode || product.promotion != 0"><del>{{product.initial_price| currency:productsService?.currency:'symbol'}}</del><span>{{product.promotion}}% off</span></h4>
                         <h3 class="price" *ngIf="!productsService?.catalogMode">{{product.price | currency:productsService?.currency:'symbol'}}</h3>
+                        <ngb-rating [rate]="product.generalrate" style="font-size:x-large; color : orange;"></ngb-rating>
                         <p class="text-muted description">{{product.description}}</p>
                      </div>
                      <div class="py-1 mt-15">
@@ -78,42 +79,69 @@
                <mat-tab-group [@.disabled]="true" [selectedIndex]="0">
                <mat-tab label="Description">
                   <div class="full-desc lh">
+                     <ngb-rating [rate]="product.generalrate" style="font-size:x-large; color : orange;"></ngb-rating>
                      <p class="text-muted">{{product.description}}</p>
+                     
                   </div>
                </mat-tab>
-               <mat-tab label="Details">
-                  <div class="full-desc lh text-muted">
-                     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                     <ul class="px-2 mt-1">
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        <li>Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna. Vivamus gravida, ipsum vel luctus luctus, nisi felis vestibulum est, nec interdum tellus leo quis tellus. Sed sit amet convallis enim, in laoreet orci.</li>
-                        <li>Donec et elit at nulla congue interdum sit amet varius erat.</li>
-                        <li>Nulla sit amet risus pellentesque, dignissim massa ut, dignissim arcu.</li>
-                        <li>Morbi dapibus ligula at faucibus tempus. Aenean vehicula, tortor gravida elementum tincidunt, justo lorem vestibulum ex, eget egestas arcu tellus in magna. Vivamus gravida, ipsum vel luctus luctus, nisi felis vestibulum est, nec interdum tellus leo quis tellus. Sed sit amet convallis enim, in laoreet orci.</li>
-                        <li>Nunc sodales justo ut nisi euismod, quis condimentum leo varius.</li>
-                     </ul>
-                  </div>
-               </mat-tab>
+
                <!--REVIEWPART-->
                <mat-tab label="Reviews">
                   <div class="full-desc lh">
-                     <mat-list class="reviews">
-                        <mat-list-item class="content">
-                           <img matListAvatar [src]="'assets/images/avatars/avatar-1.png'" alt="image" class="review-author">
-                           <p matLine fxLayoutAlign="start center">
+                     <!-- <mat-list class="reviews"> -->
+                        <!--<mat-list-item class="generalrate">-->
+                           <!-- </mat-list-item> -->
+                          
+                           <!--  <div  fxLayoutAlign="start center"  *ngFor="let comment of comments"> -->
+                              <!-- <mat-list-item class="name"> -->
+                              <!-- <h5><span class="text"><br>client</span></h5> <br> -->
+                              <!-- <ngb-rating [rate]="comment.rate" style="font-size:x-large; color : orange;"></ngb-rating> -->
+                           <!-- </mat-list-item> -->
+                              <!-- <mat-list-item class="date"> -->
+                              <!-- <h6  class="text-muted"><small><br>{{comment.date1 | date:'medium' }}</small></h6> <br> -->
+                           <!-- </mat-list-item> -->
+                              <!-- <mat-list-item class="content"> -->
+                              <!-- <h5 class="text" ><br>{{comment.content}} </h5> <br> -->
+                           <!-- </mat-list-item> -->
+                            <!-- </div> -->
+                            <!-- Contenedor Principal -->
+	<div class="comments-container" *ngFor="let comment of comments">
+	
 
-                              <span class="name" *ngFor="let comment of comments">{{comment.idc}}</span>
-                           </p>
-                           <p matLine class="text-muted" *ngFor="let comment of comments"><small>{{comment.date1 | date:'medium' }}</small></p>
-                           <p matLine class="text" *ngFor="let comment of comments">{{comment.content}} {{comment.rate}}</p>
-                        </mat-list-item>
+		<ul id="comments-list" class="comments-list">
+			<li>
+				<div class="comment-main-level">
+					<!-- Avatar -->
+					<div class="comment-avatar"><img src="https://i.pinimg.com/474x/c1/15/45/c11545a6bcd91a8a9c817201e69b1e32.jpg" alt=""></div>
+					<!-- Contenedor del Comentario -->
+		<div class="comment-box">
+						<div class="comment-head">
+							<h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Client</a></h6>
+							<span>{{comment.date1 | date:'medium' }}</span>
+							<ngb-rating [rate]="comment.rate" style="font-size:x-large; color : orange;position: absolute;
+                     right: 25%;"></ngb-rating>
+						</div>
+						<div class="comment-content">
+							{{comment.content}}
+						</div> 
+					</div>
+	</div>
+				
+				
+			</li>
 
-                     </mat-list>
+			
+		</ul>
+	</div>
+                           
+                     
+
+                     <!-- </mat-list> -->
                      <div class="writte-reviews mt-40">
                         <h3 class="mt-2">LEAVE YOUR REVIEW</h3>
                         <div class="divider"></div>
                   
-                        <h3 fxLayoutAlign="start center" class="mt-2">
+                       <!-- <h3 fxLayoutAlign="start center" class="mt-2">
                            <span>Your Rating:</span>
                            <button mat-icon-button matTooltip="Very Dissatisfied" matTooltipPosition="above">
                               <mat-icon class="mat-icon-lg">sentiment_very_dissatisfied</mat-icon>
@@ -130,15 +158,19 @@
                            <button mat-icon-button matTooltip="Very Satisfied" matTooltipPosition="above">
                               <mat-icon class="mat-icon-lg">sentiment_very_satisfied</mat-icon>
                            </button>
-                        </h3>
+                        </h3>-->
+                        <div style="font-size:x-large; color : orange;">
+                           <ngb-rating [max]="5" [(rate)]="Acomment.rate" [readonly]="readonly"></ngb-rating>
+                        </div>
                         <form fxLayout="row wrap">
+  
                            <div  fxFlex="100" fxFlex.gt-sm="100" class="mt-20" ngClass.sm="mt-10" ngClass.xs="mt-10">
                               <mat-form-field class="w-100">
-                                 <textarea placeholder="Post content" matInput rows="6" ngModel name="content" required></textarea>
+                                 <textarea placeholder="Post content" matInput rows="6" ngModel [(ngModel)]="Acomment.content" name="content" required></textarea>
                               </mat-form-field>
                            </div>
                            <div class="button-wrap" fxFlex="100" fxFlex.gt-sm="100" class="px-1" ngClass.sm="mt-1" ngClass.xs="mt-1">
-                              <button class="btn-project" mat-raised-button color="accent" type="submit">Submit Review</button>
+                              <button class="btn-project" mat-raised-button color="accent" type="submit" (click)="onSubmit(product.id)">Submit Review</button>
                            </div>
                         </form>
                      </div>
@@ -172,7 +204,7 @@
                    <mat-icon class="mat-icon-xlg  m-0">local_shipping</mat-icon>
                    <div class="content ml-10">
                       <p>FREE SHIPPING</p>
-                      <span class="text-muted m-0">Free shipping on all orders over $99</span>
+                      <span class="text-muted m-0">Free shipping on all orders over DT99</span>
                    </div>
                 </mat-card>
              </div>
@@ -207,7 +239,7 @@
            <div class="percent">
              <span>%</span>off
            </div>
-           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nects.</p>
+           <p>Follow our Social Media and be Updated of our big sales !</p>
        </div>
        </div>
        </div>

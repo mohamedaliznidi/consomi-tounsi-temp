@@ -8,7 +8,7 @@
         <div fxFlex="100" fxFlex.gt-sm="50">
             <div class="swiper-container h-100">
                 <div class="swiper-wrapper">
-                  <img [src]="product.pictures[0].big" alt="" class="img-fluid">
+                  <img [src]="product.image" alt="" class="img-fluid">
                 </div>
 
             </div>
@@ -17,18 +17,58 @@
           <div class="product-right">
               <div class="product-details">
                   <h2 class="mb-10">{{product.name}}</h2>
-                <h4 class="mb-10" ><del>{{product.salePrice | currency:productsService?.currency:'symbol'}}</del><span>{{product.discount}}% off</span></h4>
+                  
+                <h4 *ngIf="product.promotion != 0" class="mb-10" ><del>{{product.initial_price | currency:productsService?.currency:'symbol'}}</del><span>{{product.promotion}}% off</span></h4>
                 <h3 class="price mb-10">{{product.price | currency:productsService?.currency:'symbol' }}</h3>
                 <div class="discription">
                   <p class="bold">Product details</p>
-                  <p class="text-muted productDescription">{{product.description}}</p>
+                  <div  *ngIf ="product.nature === 'Alimentaire'"class="Healthyscore" fxLayout="row" fxLayoutAlign="space-between center">
+
+                    <a    class="scoresize"> Healthy Score :{{nutriscore}}</a>
+                    <br>
+                    <a *ngIf="nutriscore==='C'">
+                    <img src ="http://www.ludigaume.be/images/icons/ecoscore_C.png" width="70" height="30">
+                 </a>
+                 <a *ngIf="nutriscore==='B'">
+                    <img src ="http://www.ludigaume.be/images/icons/ecoscore_B.png" width="70" height="30">
+                 </a>
+                 <a *ngIf="nutriscore==='A'">
+                    <img src ="http://www.ludigaume.be/images/icons/ecoscore_A.png" width="70" height="30">
+                 </a>
+                 <a *ngIf="nutriscore==='D'">
+                    <img src ="http://www.ludigaume.be/images/icons/ecoscore_D.png" width="70" height="30">
+                 </a>
+                 <a *ngIf="nutriscore==='E'">
+                    <img src ="http://www.ludigaume.be/images/icons/ecoscore_E.png" width="70" height="30">
+                 </a>
+                 </div>
+           
+                 <div class="ecoscore" fxLayout="row" fxLayoutAlign="space-between center">
+                    <a    class="ecosize"> Eco Score </a>
+                    <br>
+                    <a *ngIf="ecoscore===1">
+                    <img src ="http://www.ludigaume.be/images/icons/ecoscore_A.png" width="70" height="30">
+                 </a>
+                 <a *ngIf="ecoscore===2">
+                    <img src ="http://www.ludigaume.be/images/icons/ecoscore_B.png" width="70" height="30">
+                 </a>
+                 <a *ngIf="ecoscore===3">
+                    <img src ="http://www.ludigaume.be/images/icons/ecoscore_C.png" width="70" height="30">
+                 </a>
+                 <a *ngIf="ecoscore===4">
+                    <img src ="http://www.ludigaume.be/images/icons/ecoscore_D.png" width="70" height="30">
+                 </a>
+              
+           
+                 </div>
+                  <!--<p class="text-muted productDescription">{{product.description}}</p>-->
                 </div>
             </div>
             <div class="py-1 mt-15">
                 <p>
                   <span class="text-muted fw-500">Avalibility: </span>
-                <span class="avalibility" *ngIf="counter <= product.stock"><span>In Stock</span></span>
-                <span class="avalibility" *ngIf="counter > product.stock"><span class="red">Out of Stock</span></span>
+                <span class="avalibility" *ngIf="counter <= product.quantity"><span>In Stock</span></span>
+                <span class="avalibility" *ngIf="counter > product.quantity"><span class="red">Out of Stock</span></span>
               </p>
             </div>
             <div class="quantity mt-15">

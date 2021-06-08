@@ -8,7 +8,8 @@ import { SwiperConfigInterface, SwiperPaginationInterface } from 'ngx-swiper-wra
 })
 export class MainCarouselComponent implements OnInit {
 
-  @Input('slides') slides: Array<any> = [];
+ //@Input('slides') slides: Array<any> = [];
+  @Input('slides1') slides1: Array<any> = [];
 
   public config: SwiperConfigInterface = {};
 
@@ -19,7 +20,9 @@ export class MainCarouselComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit(
+   
+  ) { }
 
   ngAfterViewInit(){
     this.config = {

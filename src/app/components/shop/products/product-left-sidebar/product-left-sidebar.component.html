@@ -5,24 +5,23 @@
           <div class="toggles-wrapper" fxLayout="column" fxLayout.lt-md="column">
               <div class="toggles" fxFlex.lt-md="100">
                   <mat-accordion>
-                      <mat-expansion-panel>
+                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
                           <mat-panel-title>
-                              <span>Categories</span>
+                              <span>Nature</span>
                           </mat-panel-title>
                         </mat-expansion-panel-header>
                     <app-categories></app-categories>
                       </mat-expansion-panel>
-                      <mat-expansion-panel>
+                   <mat-expansion-panel>
                           <mat-expansion-panel-header>
                             <mat-panel-title>
-                                <span>Brands</span>
+                                <span>Categories</span>
                             </mat-panel-title>
                           </mat-expansion-panel-header>
-
                           <div class="brands">
-                             <app-brands (brandChanged)="onBrendsChanged($event)"></app-brands>
-                           </div>
+                    <app-brands (brandChanged)="onBrendsChanged($event)"></app-brands>
+                            </div> 
                         </mat-expansion-panel>
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
@@ -65,13 +64,14 @@
                     </button>
                     <button mat-icon-button (click)="changeViewType('list', 33.3)">
                         <mat-icon>view_module</mat-icon>
-                    </button>
-                    <button mat-icon-button (click)="changeViewType('list', 25)">
+                   </button>
+                   <button mat-icon-button (click)="changeViewType('list', 25)">
                         <mat-icon>view_comfy</mat-icon>
                     </button>
-                </div>
+                </div> 
               </div>
-              <div [@Animation]="animation" fxLayout="row wrap" class="products-wrapper">
+              <!--I have a problem here j'ai enlevé [@Animation]="animation" -->
+              <div fxLayout="row wrap" class="products-wrapper">
                   <div *ngFor="let products of allItems | orderBy:sortByOrder | paginate: { itemsPerPage: 12, currentPage: page  }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
                      <div class="product-box">
                         <app-product [product]="products"></app-product>

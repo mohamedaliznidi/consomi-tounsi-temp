@@ -14,6 +14,7 @@ import { FaqComponent } from './faq/faq.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { BlogModule } from '../blog/blog.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { HammerModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     MyAccountComponent,
     FaqComponent,
     AboutUsComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    HammerModule
 
   ]
 })
